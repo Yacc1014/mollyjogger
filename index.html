@@ -1,0 +1,1259 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Purveyors of Ozark Legend & Other Fine Goods - Mollyjogger</title>
+    <!-- https://www.mollyjogger.com/ 
+    V 1. FREE SHIPPING FOR ORDERS OVER $49 bar做出來 https://codepen.io/not0000/pen/WMvoNQ
+    V 2. 商品標籤sodo out
+    V 3. 社群icon 還原
+    V 4. email botton hover
+    V 5. about 圖放大會跑版
+    V 6. 底部有白線
+    V 7. 底部的圖片需放大
+    V 8. 導覽列及about 的 RWD
+    -->
+    <style type="text/css">
+        @import url("https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css");
+        @import url("https://fonts.googleapis.com/css?family=Noto+Sana+TC:100,300,400,500,700,900&=display=swap");
+        *{
+            padding: 0;
+            margin: 0;
+            list-style: none;
+            font-family: 'noto Sana TC',sans-serif;
+            /* border: 1px solid #ccc; */
+        }
+        body{
+            background-color: #FCF9F4;
+        }
+        /* ---------------Header 1--------------- */
+        .header{
+            width: 100%;
+            height: 40px;
+            background-color: #252823;
+        }
+        .wrap{
+            width: 100%;
+            margin-left: auto;
+            margin-right: auto;
+            display: flex;
+            justify-content: center;
+        }
+        .Search{
+            width: 100px;
+            height: 40px;
+            color:#ccc;
+            padding: 10px;
+            box-sizing: border-box;
+            display: flex;
+            flex-direction: row;
+        }
+        .SearchIcon{
+            margin-right:5px ;
+        }
+        .searchName{
+            font-family: 'noto Sana TC',sans-serif;
+        }
+        .wrap  a{
+            color: #ccc;
+            text-decoration: none;
+        }
+        .textLinks{
+            position: relative;
+            margin: 10px;
+            margin-left: 50%;
+            font-family: 'noto Sana TC',sans-serif;
+        }
+        a + a {
+            border-left: 2px solid #ccc;
+            margin-left: 2px;
+        }
+        .CreateAccount{
+            padding-left: 6px;
+        }
+        .carts{
+            width: 65px;
+            display: flex;
+            font-family: 'noto Sana TC',sans-serif;
+            color: #ccc;
+            border: 1px solid #ccc;
+            margin: 4px;
+            text-align: center;
+            padding-top: 5px;
+            padding-left: 4px;
+        }
+        .cartIcon{
+            padding-right: 4px;
+        }
+        .cartNum{
+            padding-right: 4px;
+        }
+        /* -------------------free------------------- */
+        .free{
+            width: 100%;
+            height: 44px;
+            background-color: #007580;
+        }
+        .free .fa-caret-down{
+            color: #fff;
+            padding: 16px 25px 20px 25px;
+            position: fixed;
+            border-radius:  0 0 6px 6px;
+            top: -10px;
+            left: 180px;
+            background-color: #007580;
+            z-index: 100;
+            transition: .3s;
+        }
+        .free .txt{
+            height: 44px;
+            text-align: center;
+            padding: 14px 0;
+            margin: auto;
+        }
+        .free .txt a{
+            text-decoration: none;
+            color: #fff;
+        }
+        .free .fa-caret-down:hover{
+            top: -5px;
+        }
+        /* ---------------siteHeader 2--------------- */
+        .siteHeader{
+            width: 100%;
+            height: 80px;
+            background-color:#FCF9F4;
+            /* border: 1px solid black; */
+        }
+        .wrap-siteHeader{
+            width: 100%;
+            height: 80px;
+            margin: auto;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            
+        }
+        .wrap-siteHeader img{
+            height: 50px;
+            display: flex;
+            margin-right: 40%;
+        }
+        .navbar {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 12px;
+        }
+        .navbar .navbar_shop .fa{
+            vertical-align: top;
+            padding: 0 2px;
+            color: #555;
+            opacity: .6;
+        }
+        
+        .navbar li{      
+            width: 60px;
+            position: relative;
+            margin:4px 5px;
+            font-family: 'noto Sana TC',sans-serif;
+            
+        }
+        .navbar li a{
+            text-decoration: none;
+            color: #252823;
+            padding:6px 5px;
+        }
+        .navbar li a:hover{
+            color: #007580;
+        }
+        .navbar li a:hover .fa{
+            opacity: .9;
+        }
+
+        /* -------------------------hover--------------------------- */
+        .navbar li > ul{
+            position: absolute;
+            background-color: #FCF9F4;
+            display: flex;
+            flex-direction: column;
+            z-index: 20;
+            left: -5px;
+            width: 95px;
+            height: 225px;
+            top:-800px;
+        } 
+        .navbar li > ul> li{
+            width:100%;
+            text-align: left;
+            margin: 8px 0;
+            top: 10px;
+            font-weight: 600;
+            font-size: 8px;
+        }
+        .navbar li > ul:after{
+            content: '';
+            position: absolute;
+            width: 95px;
+            height: 3px;
+            background-color: #999;
+        }
+
+        .navbar li:hover > ul{
+            top: 19px;
+        }
+        
+        
+        /* ---------------banner 3--------------- */
+        .banner{
+            height:930px;
+        }
+        .banner .container {
+            width: 100%;
+            height:1000px;
+            position: relative;
+            overflow: hidden;
+            text-align: center;
+        }
+        .slides {
+            height:900px;
+            width: 100%;
+        }
+        .slides .slide{
+            width: inherit;
+            height: inherit;
+            position: absolute;
+            top: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;    
+            transition: .5s transform ease-in-out; 
+        }
+        .slide:nth-of-type(1){
+            background-image: url(pic/homepage_hero_image_1.webp);
+            background-position: center;
+            background-size: cover;
+            background-repeat: no-repeat;
+            
+        }
+        .slide:nth-of-type(2){
+            background-image: url(pic/homepage_hero_image_2.webp);
+            background-position: center;
+            background-size: cover;
+            background-repeat: no-repeat;
+            left: 100%;
+        }
+        .slide:nth-of-type(3){
+            background-image: url(pic/homepage_hero_image_3.webp);
+            background-position: center;
+            background-size: cover;
+            background-repeat: no-repeat;
+            left: 200%;
+        }
+        .slide:nth-of-type(4){
+            background-image: url(pic/homepage_hero_image_4.jpg);
+            background-position: center;
+            background-size: cover;
+            background-repeat: no-repeat;
+            left: 300%;
+        }
+        
+
+        input[type="radio"]{
+            position: relative;
+            z-index: 100;
+            display: none;
+        }
+        .contrils-visible{
+            position: absolute;
+            width: 100%;
+            bottom: 40px;
+            text-align: center;
+        }
+        .contrils-visible label{
+            display: inline-block;
+            width: 10px;
+            height: 10px;
+            background-color: #ccc;
+            border-radius: 50%;
+            margin: 5px;
+            border: 1px solid #fff;
+        }
+
+        .slides input[type="radio"]:nth-of-type(1):checked ~ .contrils-visible label:nth-of-type(1){
+            background-color: rgb(255, 0, 0);
+        }
+        .slides input[type="radio"]:nth-of-type(2):checked ~ .contrils-visible label:nth-of-type(2){
+            background-color: rgb(255, 0, 0);
+        }
+        .slides input[type="radio"]:nth-of-type(3):checked ~ .contrils-visible label:nth-of-type(3){
+            background-color: rgb(255, 0, 0);
+        }
+        .slides input[type="radio"]:nth-of-type(4):checked ~ .contrils-visible label:nth-of-type(4){
+            background-color: rgb(255, 0, 0);
+        }
+
+        .slides input[type="radio"]:nth-of-type(1):checked ~ .slide{
+            transform: translateX(0%);
+        }
+        .slides input[type="radio"]:nth-of-type(2):checked ~ .slide{
+            transform: translateX(-100%);
+        }
+        .slides input[type="radio"]:nth-of-type(3):checked ~ .slide{
+            transform: translateX(-200%);
+        }
+        .slides input[type="radio"]:nth-of-type(4):checked ~ .slide{
+            transform: translateX(-300%);
+        }
+
+
+        .navigator{
+            position: absolute;
+            top: 50%;
+            transform: translatey(-50%);
+            width: 100%;
+            z-index: 100;
+            display: flex;
+            justify-content: space-between;
+            box-sizing: border-box;
+            font-size: 10px;
+            font-weight: 100;
+            display: flex;
+            justify-content: space-between;
+            box-sizing: border-box;
+            display: none;
+        }
+        .navigator label{
+            display: inline-block;
+            width: 24px;
+            height: 60px;
+            background-color: #ccc;
+
+        }
+        .navigator i {
+        font-size: 15px;
+        color: #333;
+        padding: 22px 5px;
+        
+        }
+
+        .slides input[type="radio"]:nth-of-type(1):checked ~ .navigator:nth-of-type(1) {
+        display: flex;
+        }
+
+        .slides input[type="radio"]:nth-of-type(2):checked ~ .navigator:nth-of-type(2) {
+        display: flex;
+        }
+
+        .slides input[type="radio"]:nth-of-type(3):checked ~ .navigator:nth-of-type(3) {
+        display: flex;
+        }
+
+        .slides input[type="radio"]:nth-of-type(4):checked ~ .navigator:nth-of-type(4) {
+        display: flex;
+        }
+        
+        /* ---------------box 4--------------- */
+        .featuredProducts{
+            width: 1024px;
+            height: 1300px;
+            position: relative;
+            font-family: 'noto Sana TC',sans-serif;
+            color: #A7A27B;
+            margin-top: 100px;
+            text-align: center;
+            margin-left: auto;
+            margin-right: auto;
+            
+        }
+        .fpTitle h3{
+            width: 100%;
+            height: 30px;
+            text-align: center;
+            margin-left: 50%;
+            margin-right: 50%;
+            transform: translate(-50% , -50%);
+            font-size: 25px;
+            color:#A7A27B
+        }
+        .fpTitle a{
+            text-decoration: none;
+            width: 200px;
+            position: absolute;
+            text-align: center;
+            padding: 5px;
+            border: 1px solid #007580;
+            color: #007580;
+            margin-top: 10px;
+            font-weight: 300;
+            font-size: 10px;
+            right: 50%;
+            left: 50%;
+            transform: translate(-50% , -50%);
+        }
+        .fpTitle a:hover{
+            color: #646569;
+            border: 1px solid #646569;
+        }
+        .fpboxs{
+            width: 100%;
+            height: 1200px;
+            margin-top: 50px;
+        }
+        .fpbox{
+            display: inline-block;
+            width: 224px;
+            height: 272px;
+            margin: 8px;
+        }
+        .image-cell .commodity_01{
+            width: 224px;
+            display: flex;
+            background:url(pic/commodity_01-0.webp);
+            background-size: 100%;
+        }
+        .image-cell .commodity_02{
+            width: 224px;
+            display: flex;
+            background:url(pic/commodity_02-0.webp);
+            background-size: 100%;
+        }
+        .image-cell .commodity_03{
+            width: 224px;
+            display: flex;
+            background:url(pic/commodity_03-0.webp);
+            background-size: 100%;
+        }
+        .image-cell .commodity_04{
+            width: 224px;
+            display: flex;
+            background:url(pic/commodity_04-0.webp);
+            background-size: 100%;
+        }
+        .image-cell .commodity_05{
+            width: 224px;
+            display: flex;
+            background:url(pic/commodity_05-0.webp);
+            background-size: 100%;
+        }
+        .image-cell .commodity_06{
+            width: 224px;
+            display: flex;
+            background:url(pic/commodity_06-0.webp);
+            background-size: 100%;
+        }
+        .image-cell .commodity_07{
+            width: 224px;
+            display: flex;
+            background:url(pic/commodity_07-0.webp);
+            background-size: 100%;
+        }
+        .image-cell .commodity_08{
+            width: 224px;
+            display: flex;
+            background:url(pic/commodity_08-0.webp);
+            background-size: 100%;
+        }
+        .image-cell .commodity_09{
+            width: 224px;
+            display: flex;
+            background:url(pic/commodity_09-0.webp);
+            background-size: 100%;
+        }
+        .image-cell .commodity_10{
+            width: 224px;
+            display: flex;
+            background:url(pic/commodity_10-0.webp);
+            background-size: 100%;
+        }
+        .image-cell .commodity_11{
+            width: 224px;
+            display: flex;
+            background:url(pic/commodity_11-0.webp);
+            background-size: 100%;
+        }
+        .image-cell .commodity_12{
+            width: 224px;
+            display: flex;
+            background:url(pic/commodity_12-0.webp);
+            background-size: 100%;
+        }
+        .image-cell .commodity_13{
+            width: 224px;
+            display: flex;
+            background:url(pic/commodity_13-0.webp);
+            background-size: 100%;
+        }
+        .image-cell .commodity_14{
+            width: 224px;
+            display: flex;
+            background:url(pic/commodity_14-0.webp);
+            background-size: 100%;
+        }
+        .image-cell .commodity_15{
+            width: 224px;
+            display: flex;
+            background:url(pic/commodity_15-0.webp);
+            background-size: 100%;
+        }
+        .image-cell .commodity_16{
+            width: 224px;
+            display: flex;
+            background:url(pic/commodity_16-0.webp);
+            background-size: 100%;
+            position: relative;
+        }
+        .commodity_16 h6{
+            /* width: 60px;
+            height: 20px; */
+            background-color:#fcf9f4 ;
+            color: #e75300;
+            text-decoration: none;
+            font-size: 2px;
+            display: flex;
+            z-index: 99;
+            padding: 5px;
+            white-space:pre; /* 文字不換行 */
+            position: absolute;
+            bottom: 20px;
+            right: 0;
+        }
+
+        .image-cell img{
+            width: 100%;
+            height: 100%;
+        }
+        .image-cell img:hover{
+            opacity: 0;
+        }           
+        .fpbox:hover .image-cell img{
+            opacity: 0;
+        } 
+        .fpbox .boxName{
+            height: 20px;
+            color: #007580;
+            display: flex;
+            padding: 10px;
+            justify-content: center;
+            font-size: 15px;
+            font-weight: 750;
+            text-decoration: none;
+        }
+        /* ---------------banner 5--------------- */
+        .advertise{
+            /* width: 100%; */
+            height: 440px;
+            background-color: #fff;
+        }
+        .squares{
+            display: flex;
+            justify-content: space-around;
+        }
+        .square1{
+            position: relative;
+            height: 435px;
+        }
+        .square2{
+            height: 435px;
+        }
+        .square3{
+            position: relative;
+            height: 435px;
+        }
+        .square1 img, .square2 img, .square3 img{
+            width: 100%;
+        }
+        .square1 a{
+            position: absolute;
+            text-decoration: none;
+            color: white;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50% , -50%);
+            border: 2px solid #fff;
+            padding: 20px 80px;
+            background-color: #00000070;
+        }
+        .square1 a:hover ,.square3 a:hover{
+            border: 1px solid #d7ca9e;
+            color: #d7ca9e;
+        }
+        .square3 a{
+            position: absolute;
+            text-decoration: none;
+            color: white;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50% , -50%);
+            border: 2px solid #fff;
+            padding: 20px 40px;
+            background-color: #00000070;
+        }
+        /* --------------------about-------------------- */
+        .about{
+            width: 100%;
+            height: 650px;
+            background-color: #fff;
+            position: relative;
+        }
+        .container{
+            position: absolute;
+            height: 650px;
+            display: flex;
+            width: 100%;
+            box-sizing: border-box;
+            justify-content: center;
+            align-items: center;
+            
+        }
+        .about_img{
+            width: 50%;
+            height: 550px;
+            margin-right: 5%;
+        }
+        .about__text{
+            width: 50%;
+            
+        }
+        .about_img img{
+            height: 100%;
+        }
+        .about_text h4{
+            color: #555;
+            font-size: 25px;
+            margin-bottom: 20px;
+            width: 90%;
+        }
+        .about_text h3{
+            color: #007580;
+            font-size: 40px;
+            width: 90%;
+        }
+        .about_text p{
+            color: #555;
+            line-height: 1.5em;
+            margin: 20px 0 ;
+            width: 90%;
+        }
+        .about_text a{
+            text-decoration: none;
+            padding: 5px;
+            border: 1px solid #007580;
+            color: #007580;
+            font-weight: 900;
+            font-size: 14px;
+            
+        }
+        .about_text a:hover{
+            color: #252823;
+            border: 1px solid #252823;
+        }
+        @media (max-width: 1300px) {
+            .about_img img{
+            height: 80%;
+            }
+        }
+        @media (max-width: 1000px) {
+            .about_img img{
+            height: 60%;
+            }
+        }
+        /* ---------------footer 6--------------- */
+        .footer{
+            width: 100%;
+            height: 400px;
+            padding: 20px 0 0 0 ;
+            background-image: url(pic/footer_img.webp);
+            background-position: center center;
+            background-size: 100%;
+        }
+        .footer p , a ,.title ,ul {
+            color: #c2c2b4;
+        }
+        .footer_nav,.payments, .copyright{
+            padding: 5px 0;
+            width: 1024px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        .logo, .new, .links, .getInTouch{
+            width: 25%;
+            padding: 20px;
+        }
+        .footer .logo{
+            width: 236px;
+            height: 112px;
+            background-size: 100%;
+        }
+        .footer_nav{
+            display: flex;
+        }
+        .new, .links, .getInTouch{
+            text-align: center;
+        }
+        .footer .title{
+            font-size: 20px;
+            color: #A8A476;
+            margin: 0 0 10px 0;
+        }
+        .new p {
+            font-size: 12px;
+            margin: 0 0 15px 0;
+            line-height: 1.6em;
+        }
+        .new .new_input{
+            display: flex;
+            width: 100%;
+        }
+        .new .Email{
+            width: 70%;
+            outline-style: none;
+            border: .5px solid #A8A476;
+            background: rgba(45,45,45,.10);
+            color: #fff;
+            text-indent: 10px
+        }
+        .new button{
+            width: 30%;
+            font-size: 6px;
+            padding: 10px 0;
+            margin: 0 5px;
+            border: .5px solid #A8A476;
+            background-color: #A8A476;
+            font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+        }
+        .new button:hover{
+            cursor: pointer;
+            opacity: .9;
+        }
+        .links li{
+            margin: 6px 0 0 0 ;
+            font-size: 12px;
+        }
+        .links li a{
+            text-decoration: none;
+        }
+        .getInTouch .mail{
+            color: #ccc;
+            font-size: 12px;
+            margin: 20px 0;
+        }
+        .payments{
+            padding: 20px 0 0 0 ;
+        }
+        .icons{
+            display: flex;
+            justify-content: center;
+            color: #A8A476;
+            font-size: 20px;
+        }
+        .icons .icon{
+            padding: 10px;
+        }
+        .icons .icon:hover{
+            opacity: .8;
+        }
+        .payments, .icons, .copyright{
+            text-align: center;
+        }
+        .cards{
+            display: flex;
+            justify-content: center;
+        }
+        .card{
+            margin: 0 .2em;
+        }
+        .copyright{
+            padding: 30px 30px 0 30px;
+            font-size: 10px;
+        }
+        .copyright span{
+            color: #A7A27B;
+        }
+
+        /* ________________ */
+        #infoModal{
+            margin: auto;   
+        }
+        .wrapFree{
+            position: relative;
+        }
+        .pop-up{
+            width: 650px;
+            height: 500px;
+            background-color: rgb(252, 249, 244);
+            text-align: center;
+            position: relative;
+            border-radius: 10px;
+            border: 1px solid #ccc;
+            top: 50%;
+        }
+        .pop-up .fa-caret-down{
+            font-size: 25px;
+            color: #555;
+        }
+        .close{
+            position: absolute;
+            right: 10px;
+            top: 10px;
+        }
+        .close:hover{
+            cursor: pointer;
+        }
+        .pop-up img{
+            width: 600px;
+            padding: 20px 0;
+        }
+        .pop-up h5 , .pop-up p{
+            font-size: 20px;
+            padding: 4px;
+        }
+        .pop-up p{
+            font-weight: 100;
+        }
+        .pop-up h5{
+            margin: 0 0 30px 0  ;
+        }
+        .pop-up input{
+            width: 400px;
+            height: 30px;
+            margin: auto;
+            display: block;
+        }
+        .pop-up button{
+            margin: 30px 0;
+            background-color: #007580;
+            color: #fff;
+            padding: 17px 50px;
+            border: none;
+            cursor: pointer;
+            font-size: 20px;
+        }
+        .pop-up h6{
+            color: #222;
+            font-size: 5px;
+        }
+        dialog{
+            border: none;
+            box-shadow: 0 2px 6px #ccc;
+            border-radius: 10px;
+        }
+        dialog::backdrop {
+            background-color: rgba(0, 0, 0, 0.3);
+        }
+        
+        /* ________________ */
+
+    </style>
+</head>
+<body>
+    <div class="header">
+        <div class="wrap">
+            <div class="Search">
+                <div class="SearchIcon"><i class="fa fa-search" aria-hidden="true"></i></div>
+                <div class="searchName">Search</div>
+            </div>
+            <ul class="textLinks">
+                <a href="https://www.google.com/">Log in</a>
+                <a href="https://www.google.com/" class="CreateAccount">Create account</a>
+            </ul>
+            <div class="carts">
+                <div class="cartIcon"><i class="fa fa-shopping-cart" aria-hidden="true"></i></div>
+                <div class="cartNum">0</div>    
+                <a href="https://www.google.com/">cart</a>
+            </div>
+        </div>
+    </div>
+    <div class="free">
+        <div class="down" id="show"><a href="#"><i class="fa fa-caret-down" aria-hidden="true"></i></a></div>
+        <dialog id="infoModal">
+            <div class="wrapFree">
+                <div class="pop-up">
+                    <div class="close" id="close">
+                        <i class="fa fa-times-circle" aria-hidden="true"></i>
+                    </div>
+                    <img src="pic/free.webp" alt="pic" >
+                    <p>We want to keep you posted on all things Mollyjogger.</p>
+                    <h5>Sign pop-up now and Save 10% off your first order.</h5>
+                    <input type="text">
+                    <button>SUBSCRIBE</button>
+                    <h6>*By completing this form you are signing pop-up to receive our emails and can unsubscribe at any time.</h6>
+                </div>
+            </div>
+        </dialog>
+        <div class="txt">
+            <p><a href="#">FREE SHIPPING FOR ORDERS OVER $49</a></p>
+        </div>
+    </div>
+    <div class="siteHeader">
+        <div class="wrap-siteHeader">
+            <img src="pic/logo.png" alt="logo">
+            <ul class="navbar">
+                <li><a href="https://www.google.com/" class="navbar_shop">SHOP<i class="fa fa-sort-desc" aria-hidden="true"></i></a>
+                    <ul>
+                        <li><a href="https://www.google.com/">SHOP ALL</a></li>
+                        <li><a href="https://www.google.com/">CAMPING</a></li>
+                        <li><a href="https://www.google.com/">FISHING</a></li>
+                        <li><a href="https://www.google.com/">KNIFE KITS</a></li>
+                        <li><a href="https://www.google.com/">WRITING</a></li>
+                        <li><a href="https://www.google.com/">GIFTS</a></li>
+                        <li><a href="https://www.google.com/">APPAREL</a></li>
+                    </ul>
+                </li>
+                <li><a href="https://www.google.com/">ABOUT</a></li>
+                <li><a href="https://www.google.com/">CONTACT</a></li>
+            </ul>
+        </div>
+    </div>
+    <div class="banner">
+        <div class="container">
+            <ul class="slides">
+                <!-- 輪播圖圓點 -->
+                <input type="radio" id="control-1" name="control" checked>
+                <input type="radio" id="control-2" name="control">
+                <input type="radio" id="control-3" name="control">
+                <input type="radio" id="control-4" name="control">
+                <!-- 輪播圖左右箭頭 -->
+                <div class="navigator slide-1">
+                    <label for="control-4">
+                        <i class="fa fa-chevron-left" aria-hidden="true"></i>
+                    </label>
+                    <label for="control-2">
+                        <i class="fa fa-chevron-right" aria-hidden="true"></i>
+                    </label>
+                </div>
+                
+                <div class="navigator slide-2">
+                    <label for="control-1">
+                        <i class="fa fa-chevron-left" aria-hidden="true"></i>
+                    </label>
+                    <label for="control-3">
+                        <i class="fa fa-chevron-right" aria-hidden="true"></i>
+                    </label>
+                </div>
+                
+                <div class="navigator slide-3">
+                    <label for="control-2">
+                        <i class="fa fa-chevron-left" aria-hidden="true"></i>
+                    </label>
+                    <label for="control-4">
+                        <i class="fa fa-chevron-right" aria-hidden="true"></i>
+                    </label>
+                </div>
+
+                <div class="navigator slide-4">
+                    <label for="control-3">
+                        <i class="fa fa-chevron-left" aria-hidden="true"></i>
+                    </label>
+                    <label for="control-1">
+                        <i class="fa fa-chevron-right" aria-hidden="true"></i>
+                    </label>
+                </div>
+                
+                <!-- 輪播圖 -->
+                <li class="slide"></li>
+                <li class="slide"></li>
+                <li class="slide"></li>
+                <li class="slide"></li>
+
+                <div class="contrils-visible">
+                    <label for="control-1"></label>
+                    <label for="control-2"></label>
+                    <label for="control-3"></label>
+                    <label for="control-4"></label>
+                </div>
+            </ul>
+        </div>
+    </div>
+    <div class="featuredProducts">
+        <div class="fpTitle">
+            <h3>FEATURED PRODUCTS</h3>
+            <a href="https://www.google.com/">SHOP ALL PRODUCTS</a>
+        </div>
+        <div class="fpboxs">
+            <div class="fpbox">
+                <div class="image-cell">
+                    <a href="https://www.google.com/" class="commodity_01">
+                        <img src="pic/commodity_01.webp" alt="">
+                    </a>
+                </div>
+                <figcaption>
+                    <a href="https://www.google.com/" class="boxName">Fingerling Fish Knife</a>
+                </figcaption>
+            </div> 
+
+            <div class="fpbox">
+                <div class="image-cell">
+                    <a href="https://www.google.com/" class="commodity_02">
+                        <img src="pic/commodity_02.webp" alt="">
+                    </a>
+                </div>
+                <figcaption>
+                    <a href="https://www.google.com/" class="boxName">Legendary McCloud T-Shirt</a>
+                </figcaption>
+            </div> 
+
+            <div class="fpbox">
+                <div class="image-cell">
+                    <a href="https://www.google.com/" class="commodity_03">
+                        <img src="pic/commodity_03.webp" alt="">
+                    </a>
+                </div>
+                <figcaption>
+                    <a href="https://www.google.com/" class="boxName">Riverside Chair</a>
+                </figcaption>
+            </div> 
+
+            <div class="fpbox">
+                <div class="image-cell">
+                    <a href="https://www.google.com/" class="commodity_04">
+                        <img src="pic/commodity_04.webp" alt="">
+                    </a>
+                </div>
+                <figcaption>
+                    <a href="https://www.google.com/" class="boxName">Stag Safety Matches</a>
+                </figcaption>
+            </div> 
+
+            <div class="fpbox">
+                <div class="image-cell">
+                    <a href="https://www.google.com/" class="commodity_05">
+                        <img src="pic/commodity_05.webp" alt="">
+                    </a>
+                </div>
+                <figcaption>
+                    <a href="https://www.google.com/" class="boxName">Guide-Curated Fly Selection</a>
+                </figcaption>
+            </div> 
+
+            <div class="fpbox">
+                <div class="image-cell">
+                    <a href="https://www.google.com/" class="commodity_06">
+                        <img src="pic/commodity_06.webp" alt="">
+                    </a>
+                </div>
+                <figcaption>
+                    <a href="https://www.google.com/" class="boxName">CCC Legacy Bandana</a>
+                </figcaption>
+            </div>
+
+            <div class="fpbox">
+                <div class="image-cell">
+                    <a href="https://www.google.com/" class="commodity_07">
+                        <img src="pic/commodity_07.webp" alt="">
+                    </a>
+                </div>
+                <figcaption>
+                    <a href="https://www.google.com/" class="boxName">Scrimshaw Knife Kit</a>
+                </figcaption>
+            </div>
+
+            <div class="fpbox">
+                <div class="image-cell">
+                    <a href="https://www.google.com/" class="commodity_08">
+                        <img src="pic/commodity_08.webp" alt="">
+                    </a>
+                </div>
+                <figcaption>
+                    <a href="https://www.google.com/" class="boxName">Bear & Son Knife + Scrimshaw Kit</a>
+                </figcaption>
+            </div>
+
+            <div class="fpbox">
+                <div class="image-cell">
+                    <a href="https://www.google.com/" class="commodity_09">
+                        <img src="pic/commodity_09.webp" alt="">
+                    </a>
+                </div>
+                <figcaption>
+                    <a href="https://www.google.com/" class="boxName">Timber Jones Cap</a>
+                </figcaption>
+            </div>
+
+            <div class="fpbox">
+                <div class="image-cell">
+                    <a href="https://www.google.com/" class="commodity_10">
+                        <img src="pic/commodity_10.webp" alt="">
+                    </a>
+                </div>
+                <figcaption>
+                    <a href="https://www.google.com/" class="boxName">Float Knife Set</a>
+                </figcaption>
+            </div>
+
+            <div class="fpbox">
+                <div class="image-cell">
+                    <a href="https://www.google.com/" class="commodity_11">
+                        <img src="pic/commodity_11.webp" alt="">
+                    </a>
+                </div>
+                <figcaption>
+                    <a href="https://www.google.com/" class="boxName">Arrowhead Canoe T-Shirt</a>
+                </figcaption>
+            </div>
+
+            <div class="fpbox">
+                <div class="image-cell">
+                    <a href="https://www.google.com/" class="commodity_12">
+                        <img src="pic/commodity_12.webp" alt="">
+                    </a>
+                </div>
+                <figcaption>
+                    <a href="https://www.google.com/" class="boxName">Ozarks 1900 Bandana</a>
+                </figcaption>
+            </div>
+
+            <div class="fpbox">
+                <div class="image-cell">
+                    <a href="https://www.google.com/" class="commodity_13">
+                        <img src="pic/commodity_13.webp" alt="">
+                    </a>
+                </div>
+                <figcaption>
+                    <a href="https://www.google.com/" class="boxName">River Hound T-Shirt</a>
+                </figcaption>
+            </div>
+
+            <div class="fpbox">
+                <div class="image-cell">
+                    <a href="https://www.google.com/" class="commodity_14">
+                        <img src="pic/commodity_14.webp" alt="">
+                    </a>
+                </div>
+                <figcaption>
+                    <a href="https://www.google.com/" class="boxName">Safety Matches</a>
+                </figcaption>
+            </div>
+
+            <div class="fpbox">
+                <div class="image-cell">
+                    <a href="https://www.google.com/" class="commodity_15">
+                        <img src="pic/commodity_15.webp" alt="">
+                    </a>
+                </div>
+                <figcaption>
+                    <a href="https://www.google.com/" class="boxName">Canvas Field Bag</a>
+                </figcaption>
+            </div>
+
+            <div class="fpbox">
+                <div class="image-cell">
+                    <a href="https://www.google.com/" class="commodity_16">
+                        <img src="pic/commodity_16.webp" alt="">
+                        <h6>SOLD OUT</h6>
+                    </a>
+                </div>
+                <figcaption>
+                    <a href="https://www.google.com/" class="boxName">Ice Box</a>
+                </figcaption>
+            </div>
+        </div>
+    </div>
+    <div class="advertise">
+        <div class="squares">
+            <div class="square1">
+                <div class="square_iamg">
+                    <img src="pic/bandana_01.jpg" alt="">
+                </div>
+                <a class="btn" href="https://www.google.com/" >SHOP</a>
+            </div>
+            <div class="square2">
+                <div class="square_iamg">
+                    <a href="https://www.google.com/">
+                        <img src="pic/bandana_02.webp" alt="">
+                    </a>
+                </div>
+                <a href="https://www.google.com/" ></a>
+            </div>
+            <div class="square3">
+                <div class="square_iamg">
+                    <img src="pic/bandana_03.jpg" alt="">
+                </div>
+                <a class="btn" href="https://www.google.com/" >DIY SCRIMSHAW</a>
+            </div>
+        </div>
+    </div>
+
+    <div class="about">
+        <div class="container">
+            <div class="about_img">
+                <img src="pic/About Us_01.webp" alt="">
+            </div>
+            <div class="about_text">              
+                <h4>About Us</h4>
+                <h3>MOLLYJOGGER STORY</h3>
+                <p>Mollyjogger™ is an authentic American heritage brand, based in the Ozark Mountains, celebrating the region’s unique history of outdoor recreation, sporting and folklore.</p>
+                <a href="https://www.google.com/">READ OUR STORY</a>
+            </div>
+        </div>
+    </div>
+
+    <div class="footer">
+        <div class="footer_nav">
+            <div class="logo"><img src="pic/footer_logo_01.webp" alt="footer_logo_01"></div>
+            <div class="new">
+                <div class="title">NEWSLETTER</div>
+                <p>Subscribe for exclusive offers, special events and a good tall fish tale or two.</p>
+                <div class="new_input">
+                    <input class="Email" placeholder="Email" type="Email">
+                    <button>SIGN UP</button>
+                </div>
+            </div>
+            <div class="links">
+                <div class="title">LINKS</div>
+                <ul>
+                    <li><a href="#">Shop</a></li>
+                    <li><a href="#">About Us</a></li>
+                    <li><a href="#">Shipping</a></li>
+                    <li><a href="#">Terms</a></li>
+                    <li><a href="#">Privacy</a></li>
+                    <li><a href="#">Returns</a></li>
+                </ul>
+            </div>
+            <div class="getInTouch">
+                <div class="title">GET IN TOUCH</div>
+                <div class="mail">Contact us <u>info@mollyjogger.com</u></div>
+                <div class="icons">
+                    <div class="icon"><a href="#"><i class="fa fa-instagram" aria-hidden="true"></a></i></div>
+                    <div class="icon"><a href="#"><i class="fa fa-facebook" aria-hidden="true"></a></i></div>
+                    <div class="icon"><a href="#"><i class="fa fa-pinterest-p" aria-hidden="true"></a></i></div>
+                </div>
+                <div class="getInTouch_logo"><img src="pic/footer_logo_02.webp" alt=""></div>    
+            </div>
+        </div>
+        <div class="payments">
+            <div class="title">Accepted Payments</div>
+            <div class="cards">
+                <div class="card"><img src="https://cdn.shopify.com/shopifycloud/shopify/assets/payment_icons/american_express-2264c9b8b57b23b0b0831827e90cd7bcda2836adc42a912ebedf545dead35b20.svg" alt=""></div>
+                <div class="card"><img src="https://cdn.shopify.com/shopifycloud/shopify/assets/payment_icons/diners_club-16436b9fb6dd9060edb51f1c7c44e23941e544ad798282d6aef1604319562fba.svg" alt=""></div>
+                <div class="card"><img src="https://cdn.shopify.com/shopifycloud/shopify/assets/payment_icons/discover-cc9808e50193c7496e7a5245eb86d5e06f02e2476c0fe70f2c40016707d35461.svg" alt=""></div>
+                <div class="card"><img src="https://cdn.shopify.com/shopifycloud/shopify/assets/payment_icons/metapay-c01467654c10b83afaad9906dbd22f9ae6f742d301212bc0768085da73ae6c52.svg" alt=""></div>
+                <div class="card"><img src="https://cdn.shopify.com/shopifycloud/shopify/assets/payment_icons/master-173035bc8124581983d4efa50cf8626e8553c2b311353fbf67485f9c1a2b88d1.svg" alt=""></div>
+                <div class="card"><img src="https://cdn.shopify.com/shopifycloud/shopify/assets/payment_icons/paypal-49e4c1e03244b6d2de0d270ca0d22dd15da6e92cc7266e93eb43762df5aa355d.svg" alt=""></div>
+                <div class="card"><img src="https://cdn.shopify.com/shopifycloud/shopify/assets/payment_icons/shopify_pay-100fde795157a3d1c18042346cf8dbd1fcf4c4f53c20064e13ea2799eb726655.svg" alt=""></div>
+                <div class="card"><img src="https://cdn.shopify.com/shopifycloud/shopify/assets/payment_icons/venmo-e46496b4036966108664ea6a65bfeddd373275087df5f94cc3e5564fdb493eb0.svg" alt=""></div>
+                <div class="card"><img src="https://cdn.shopify.com/shopifycloud/shopify/assets/payment_icons/visa-319d545c6fd255c9aad5eeaad21fd6f7f7b4fdbdb1a35ce83b89cca12a187f00.svg" alt=""></div>
+            </div>
+        </div>
+        <div class="copyright">
+            <p><span>© 2022,</span> Mollyjogger <span>| Site by </span>Element Eleven.</p>
+        </div>
+    </div>
+    <script>
+
+        let btn=document.querySelector("#show");
+        let infoModal=document.querySelector("#infoModal");
+        let close=document.querySelector("#close");
+        btn.addEventListener("click", function(){
+        infoModal.showModal();
+        })
+        close.addEventListener("click", function(){
+        infoModal.close();
+        })
+    
+        </script>
+</body>
+</html>
